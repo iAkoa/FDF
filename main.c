@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 05:14:47 by pat               #+#    #+#             */
-/*   Updated: 2022/02/01 16:24:00 by rmattheo         ###   ########lyon.fr   */
+/*   Updated: 2022/02/02 16:19:45 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ int	main(int argc, char **argv)
 	(void)argc;
 	
 	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 1920, 1080, "test_mlx");
-	img.img = mlx_new_image(mlx_ptr, 1920, 1080);
+	win_ptr = mlx_new_window(mlx_ptr, 500, 500, "test_mlx");
+	img.img = mlx_new_image(mlx_ptr, 500, 500);
 
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
 			&img.line_length, &img.endian);
 	map = ft_parcing(argv[1]);
-	while (!map->exit)
+	while (map->exit)
 	{
 		my_mlx_pixel_put(&img, map->x, map->y, 0x00FF00FF);
 	}

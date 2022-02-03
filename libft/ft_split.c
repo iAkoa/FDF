@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 17:30:06 by pat               #+#    #+#             */
-/*   Updated: 2021/11/17 17:55:09 by rmattheo         ###   ########lyon.fr   */
+/*   Updated: 2022/02/03 18:41:18 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (0);
 	size = count_word(s, c);
-	newstring = malloc(sizeof(char *) * (count_word(s, c) + 1));
+	newstring = ft_calloc(sizeof(char *), (count_word(s, c) + 1));
 	if (!newstring)
 		return (0);
 	while (++j < size && *s)
