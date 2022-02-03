@@ -6,7 +6,7 @@
 /*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 05:14:47 by pat               #+#    #+#             */
-/*   Updated: 2022/02/02 16:19:45 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/02/03 21:43:12 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int argc, char **argv)
 	while (map->exit)
 	{
 		my_mlx_pixel_put(&img, map->x, map->y, 0x00FF00FF);
+		map++;
 	}
 	mlx_put_image_to_window(mlx_ptr, win_ptr, img.img, 0, 0);
 	mlx_loop(mlx_ptr);
