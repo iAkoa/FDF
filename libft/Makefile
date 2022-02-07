@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/05 16:45:37 by rmattheo          #+#    #+#              #
-#    Updated: 2022/02/01 16:19:57 by rmattheo         ###   ########lyon.fr    #
+#    Updated: 2022/02/03 23:13:45 by pat              ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,10 +46,11 @@ SRCS	=	ft_isalpha.c	\
 			ft_strjoin.c	\
 			ft_itoa.c		\
 			ft_putptr.c		\
-			ft_putnbr_usigned_fd.c \
+			ft_putnbr_usigned_fd.c	\
 			ft_putnbr_base.c		\
 			ft_strlen_charset.c		\
-			get_next_line.c
+			get_next_line.c			\
+			ft_round.c
 
 SRCS_BONUS	=	ft_lstnew.c			\
 				ft_lstadd_front.c	\

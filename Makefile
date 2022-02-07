@@ -12,9 +12,10 @@ LIBFT	= Libft
 MLX		= mlx
 
 INCLUDES= ${addprefix -I, ${sort ${dir ${HEADER}}}}
-SRCS	=	main.c	\
-			ft_parcing.c	\
-			my_mlx_pixel_put.c
+SRCS	=	main.c				\
+			ft_parcing.c		\
+			my_mlx_pixel_put.c	\
+			ft_zoom.c
 
 OBJS	= ${SRCS:.c=.o}
 CC		= gcc

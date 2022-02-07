@@ -6,7 +6,7 @@
 /*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 14:31:27 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/02/03 21:42:09 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/02/04 00:14:25 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static t_pixel	*ft_malloc_map(int fd)
 	char	**split_tab;
 
 	i = 0;
-	map = ft_calloc(sizeof(t_pixel), 1);
 	line = get_next_line(fd);
 	split_tab = ft_split(line, ' ');
 	if (line)
@@ -59,9 +58,9 @@ t_pixel	*creat_map(t_pixel *map, char **split_tab, int y)
 	i = 0;
 	while (split_tab[i])
 	{
+		map->z = (double)ft_atoi(split_tab[i]);
 		map->x = x;
 		map->y = y;
-		map->z = (double)ft_atoi(split_tab[i]);
 		map->color = 0x00FFFFFF;
 		map->exit = 1;
 		map++;
@@ -91,18 +90,10 @@ t_pixel	*ft_parcing(char *mapargv)
 	{
 		split_tab = ft_split(line, ' ');
 		map = creat_map(map, split_tab, y);
+		if (!map)
+			return (NULL);
 		line = get_next_line(fd);
 		y++;
 	}
-	// int i = 0;
-	// while(tmp[i].exit)
-	// {
-	// 	printf("%f\n", tmp[i].x);
-	// 	printf("%f\n", tmp[i].y);
-	// 	printf("%f\n", tmp[i].z);
-	// 	printf("%d\n", tmp[i].exit);
-	// 	printf("%d\n", i);
-	// 	i++;
-	// }
 	return (tmp);
 }
