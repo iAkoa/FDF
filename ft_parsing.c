@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parcing.c                                       :+:      :+:    :+:   */
+/*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 14:31:27 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/02/04 00:14:25 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/02/10 15:41:55 by rmattheo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,17 @@ t_pixel	*creat_map(t_pixel *map, char **split_tab, int y)
 		x++;
 		i++;
 	}
-	return(map);
+	return (map);
 }
 
-t_pixel	*ft_parcing(char *mapargv)
+t_pixel	*ft_parsing(char *mapargv)
 {
 	int		fd;
 	char	*line;
 	char	**split_tab;
 	t_pixel	*map;
-	t_pixel *tmp;
-	double		y;
+	t_pixel	*tmp;
+	double	y;
 
 	y = 0;
 	fd = open(mapargv, O_RDONLY);

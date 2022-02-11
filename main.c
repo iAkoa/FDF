@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 05:14:47 by pat               #+#    #+#             */
-/*   Updated: 2022/02/04 00:21:11 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/02/10 16:05:03 by rmattheo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,42 @@
 
 int	main(int argc, char **argv)
 {
-	void		*mlx_ptr;
-	void		*win_ptr;
 	t_data		img;
 	t_pixel		*map;
-	t_window	w;
+	t_win		w;
+	t_vector	v;
 	int			i;
+
 	(void)argc;
 	w.height = ft_atoi(argv[2]);
 	w.width = ft_atoi(argv[3]);
 	i = 0;
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, w.height,w.width, "test_mlx");
-	img.img = mlx_new_image(mlx_ptr, w.height, w.width);
-
+	w.mlx_ptr = mlx_init();
+	w.win_ptr = mlx_new_window(w.mlx_ptr, w.height, w.width, "test_mlx");
+	img.img = mlx_new_image(w.mlx_ptr, w.height, w.width);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
 			&img.line_length, &img.endian);
-	map = ft_parcing(argv[1]);
-	map = ft_zoom(map, w.height, w.width);
-	while (map[i].exit)
+	/*              */
+	w.ref = ft_ref(w, w);
+	map = ft_parsing(argv[1]);
+	i = ft_strlen((int)map[i].x);
+	while (map[i].x <= (double)w.height / 1.5
+		&& map[i].y <= (double)w.width / 1.5)
 	{
-		my_mlx_pixel_put(&img, ft_round(map[i].x), ft_round(map[i].y), ft_round(map[i].color));
+		ft_zoom(map, 1);
 		i++;
 	}
-	mlx_put_image_to_window(mlx_ptr, win_ptr, img.img, 0, 0);
-	mlx_loop(mlx_ptr);
+	i = 0;
+	while (map[i].exit)
+	{
+		if (map[i + 1].x)
+			v = ft_utils(map[i], map[i + 1]);
+		ft_bresenham(v, img, w.ref);
+		my_mlx_pixel_put(&img, ft_round(map[i].x) + w.ref.x,
+			ft_round(map[i].y) + w.ref.y, ft_round(map[i].color));
+		i++;
+	}
+	/*              */
+	mlx_put_image_to_window(w.mlx_ptr, w.win_ptr, img.img, 0, 0);
+	mlx_loop(w.mlx_ptr);
 }

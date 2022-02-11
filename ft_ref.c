@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_round.c                                         :+:      :+:    :+:   */
+/*   ft_ref.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 23:11:23 by pat               #+#    #+#             */
-/*   Updated: 2022/02/07 11:49:53 by rmattheo         ###   ########lyon.fr   */
+/*   Created: 2022/02/10 15:27:36 by rmattheo          #+#    #+#             */
+/*   Updated: 2022/02/10 15:34:34 by rmattheo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-double ft_round(double value) 
+t_pixel	ft_ref(t_win h, t_win w)
 {
-	return floor(value + 0.5);
+	t_pixel	r;
+
+	r.x = h.height / 2;
+	r.y = w.width / 2;
+	return (r);
 }
