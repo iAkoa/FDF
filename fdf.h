@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 16:44:39 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/02/10 17:53:23 by rmattheo         ###   ########lyon.fr   */
+/*   Updated: 2022/02/17 18:03:26 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ typedef struct s_pixel
 	double	y;
 	double	z;
 	int		color;
-	int		exit;
+	int		line;
+	int		column;
 }				t_pixel;
 
 typedef struct s_vector
@@ -64,15 +65,17 @@ typedef struct s_pars
 {
 	char	**split;
 	char	*line;
+	
 }				t_pars;
 
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 t_pixel		*ft_parsing(char *mapargv);
-t_pixel		*ft_zoom(t_pixel *map, int zoom);
+t_pixel		*ft_zoom(t_pixel *map, int zoom, t_pixel xy);
 t_data		ft_bresenham(t_vector vector, t_data win, t_pixel ref);
 t_vector	ft_utils(t_pixel	p1, t_pixel	p2);
 t_pixel		*ft_projection(t_pixel *map);
 t_pixel		*ft_rotation(t_pixel *map, int projection);
 t_pixel		ft_ref(t_win h, t_win w);
+t_pixel		*ft_set(t_pixel *map, t_win s);
 
 #endif

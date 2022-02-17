@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bresenham.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 13:07:00 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/02/10 15:54:10 by rmattheo         ###   ########lyon.fr   */
+/*   Updated: 2022/02/17 18:03:19 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "stdio.h"
 
 t_data	ft_bresenham(t_vector vector, t_data win, t_pixel ref)
 {
 	int			err;
 	t_win		w;
-
 	err = vector.dx + vector.dy;
 	while (1)
 	{

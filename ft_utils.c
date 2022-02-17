@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 15:24:53 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/02/10 16:00:13 by rmattheo         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 18:16:03 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 double	compare(double i, double j)
 {
-	if (i - j > 0)
+	if (j - i > 0)
 		return (1);
 	return (-1);
 }

@@ -13,10 +13,15 @@ MLX		= mlx
 
 INCLUDES= ${addprefix -I, ${sort ${dir ${HEADER}}}}
 SRCS	=	main.c				\
-			ft_parcing.c		\
+			ft_parsing.c		\
 			my_mlx_pixel_put.c	\
 			ft_zoom.c			\
-			utils.c
+			ft_utils.c			\
+			ft_rotation.c		\
+			ft_ref.c			\
+			ft_bresenham.c		\
+			ft_projection.c		\
+			ft_set.c
 
 OBJS	= ${SRCS:.c=.o}
 CC		= gcc
