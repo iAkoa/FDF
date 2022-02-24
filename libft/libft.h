@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 16:51:46 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/02/23 13:49:21 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/02/24 18:18:18 by rmattheo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,7 @@ int		ft_putnbr_usigned_fd(unsigned int n, int fd, int i);
 int		ft_putnbr_base(unsigned int nbr, char *base, int i);
 char	*get_next_line(int fd);
 double	ft_round(double value);
+int		ft_atoi_base(char *str, char *base);
+int		ft_colinterpolate(int color1, int color2, double purcent);
 
 #endif

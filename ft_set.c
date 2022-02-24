@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_set.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:14:37 by pat               #+#    #+#             */
-/*   Updated: 2022/02/23 20:33:18 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/02/24 17:31:30 by rmattheo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,5 @@ t_pixel	*ft_set(t_pixel *map, t_win s)
 	{
 		map = ft_zoom(map, 1, *map);
 	}
-	// j = 0;
-	// while (map[j].color)
-	// {
-	// 	printf("map[%i].x = %f\n", i,map[j].x);
-	// 	printf("map[%i].y = %f\n", i,map[j].y);
-	// 	j++;
-	// }
 	return (map);
 }

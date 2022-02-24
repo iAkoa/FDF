@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rotation.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 10:51:48 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/02/23 17:08:06 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/02/24 14:28:03 by rmattheo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,19 @@ t_pixel	*rotation_x(t_pixel *map, int s)
 	int	i;
 	double tmp;
 
-	s = 0;
 	i = 0;
-	while (map[i].color)
+	while (map[i].color && s == 1)
 	{
 		tmp = map[i].y;
 		map[i].y = (map[i].y * cos(M_PI / 60)) - (map[i].z * sin(M_PI / 60));
 		map[i].z = (tmp * sin(M_PI / 60)) + map[i].z * cos(M_PI / 60);
+		i++;
+	}
+		while (map[i].color && s == -1)
+	{
+		tmp = map[i].y;
+		map[i].y = (map[i].y * cos(-M_PI / 60)) - (map[i].z * sin(-M_PI / 60));
+		map[i].z = (tmp * sin(-M_PI / 60)) + map[i].z * cos(-M_PI / 60);
 		i++;
 	}
 	return (map);
@@ -32,16 +38,22 @@ t_pixel	*rotation_x(t_pixel *map, int s)
 
 t_pixel	*rotation_y(t_pixel *map, int s)
 {
-	int	i;
-	double tmp;
-	
-	s = 0;
+	int		i;
+	double	tmp;
+
 	i = 0;
-	while (map[i].color)
+	while (map[i].color && s == 2)
 	{
 		tmp = map[i].x;
 		map[i].x = (map[i].x * cos(M_PI / 60)) + (map[i].z * sin(M_PI / 60));
 		map[i].z = - (tmp * sin(M_PI / 60)) + (map[i].z * cos(M_PI / 60));
+		i++;
+	}
+	while (map[i].color && s == -2)
+	{
+		tmp = map[i].x;
+		map[i].x = (map[i].x * cos(-M_PI / 60)) + (map[i].z * sin(-M_PI / 60));
+		map[i].z = - (tmp * sin(-M_PI / 60)) + (map[i].z * cos(-M_PI / 60));
 		i++;
 	}
 	return (map);
@@ -58,6 +70,13 @@ t_pixel	*rotation_z(t_pixel *map, int s)
 		tmp = map[i].x;
 		map[i].x = (map[i].x * cos(M_PI / 60)) - (map[i].y * sin(M_PI / 60));
 		map[i].y = (tmp * sin(M_PI / 60)) + (map[i].y * cos(M_PI / 60));
+		i++;
+	}
+	while (map[i].color && s == -3)
+	{
+		tmp = map[i].x;
+		map[i].x = (map[i].x * cos(-M_PI / 60)) - (map[i].y * sin(-M_PI / 60));
+		map[i].y = (tmp * sin(-M_PI / 60)) + (map[i].y * cos(-M_PI / 60));
 		i++;
 	}
 	return (map);

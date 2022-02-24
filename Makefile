@@ -21,7 +21,10 @@ SRCS	=	main.c				\
 			ft_ref.c			\
 			ft_bresenham.c		\
 			ft_projection.c		\
-			ft_set.c
+			ft_set.c			\
+			ft_translation.c	\
+			ft_draw.c			\
+			ft_keyhook.c
 
 OBJS	= ${SRCS:.c=.o}
 CC		= gcc

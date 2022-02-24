@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_translation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 16:39:00 by pat               #+#    #+#             */
-/*   Updated: 2022/02/14 16:55:51 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/02/24 13:25:50 by rmattheo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_pixel *ft_translation_up(t_pixel *map)
 	i = 0;
 	while (map[i].color)
 	{
-		map[i].y += 1;
+		map[i].y += 50;
 		i++;
 	}
 	return (map);
@@ -32,7 +32,7 @@ t_pixel *ft_translation_down(t_pixel *map)
 	i = 0;
 	while (map[i].color)
 	{
-		map[i].y -= 1;
+		map[i].y -= 50;
 		i++;
 	}
 	return (map);
@@ -45,7 +45,7 @@ t_pixel *ft_translation_left(t_pixel *map)
 	i = 0;
 	while (map[i].color)
 	{
-		map[i].x -= 1;
+		map[i].x -= 50;
 		i++;
 	}
 	return (map);
@@ -58,7 +58,7 @@ t_pixel *ft_translation_right(t_pixel *map)
 	i = 0;
 	while (map[i].color)
 	{
-		map[i].x += 1;
+		map[i].x += 50;
 		i++;
 	}
 	return (map);
@@ -74,4 +74,5 @@ t_pixel *ft_translation(t_pixel *map, int mod)
 		ft_translation_right(map);
 	if (mod == 4)
 		ft_translation_left(map);
+	return (map);
 }
