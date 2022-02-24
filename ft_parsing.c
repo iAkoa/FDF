@@ -6,51 +6,54 @@
 /*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 14:31:27 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/02/16 13:56:42 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 15:45:03 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
 
-static int ft_size_map(char **split_tab)
+static int ft_size_map(char *line)
 {
 	int	i;
+	int	count;
 
 	i = 0;
-	while (split_tab[i])
+	count = 0;
+	while(line[i] == ' ')
 		i++;
-	return (i);
+	while (line[i] && line[i] != '\n')
+	{
+		if (line[i] == ' ' && line[i + 1] != '\n' && line[i + 1] != ' ')
+			count++;
+		i++;
+	}
+	return (count + 1);
 }
 static t_pixel	*ft_malloc_map(int fd, int *y_max, int *x_max)
 {
 	char	*line;
 	t_pixel	*map;
 	int		i;
-	char	**split_tab;
-
+	
 	i = 0;
 	*y_max = 0;
 	*x_max = 0;
 	line = get_next_line(fd);
 	if (line)
 		*y_max+=1;
-	split_tab = ft_split(line, ' ');
-	if (line)
-		i += ft_size_map(split_tab);
-	free(line);
+	i = ft_size_map(line);\
+	*x_max = i;
 	while (line)
 	{
 		line = get_next_line(fd);
-		split_tab = ft_split(line, ' ');
 		if (line)
-		{
 			*y_max+=1;
-			i += ft_size_map(split_tab);
-		}
-		free(line);
+
 	}
-	*x_max = i / *y_max;
+	i *= *y_max;
+	printf("x_max = %i\n", *x_max);
+	printf("y_max = %i\n", *y_max);
 	map = ft_calloc(i , sizeof(t_pixel));
 	if (!map)
 		return (0);
@@ -77,33 +80,40 @@ t_pixel	*creat_map(t_pixel *map, char **split_tab, int y, int x_max, int y_max)
 	return (map);
 }
 
-t_pixel	*ft_parsing(char *mapargv)
+t_pixel	*ft_parsing(char *mapargv, int *y_max, int *x_max)
 {
 	int		fd;
 	char	*line;
+	char	**line2;
 	char	**split_tab;
 	t_pixel	*map;
 	t_pixel	*tmp;
-	int		y_max;
-	int		x_max;
 	double	y;
 
 	y = 0;
-	y_max = 0;
 	fd = open(mapargv, O_RDONLY);
-	map = ft_malloc_map(fd, &y_max, &x_max);
+	map = ft_malloc_map(fd, y_max, x_max);
 	tmp = map;
 	close(fd);
 	fd = open(mapargv, O_RDONLY);
 	line = get_next_line(fd);
 	while (line)
 	{
-		split_tab = ft_split(line, ' ');
-		map = creat_map(map, split_tab, y, x_max/2, y_max/2);
+		line2 = ft_split(line, '\n');
+		split_tab = ft_split(*line2, ' ');
+		// int i = -1;
+		// int j = -1;
+		// while (split_tab[++i])
+		// 	// while (split_tab[i][++j]);
+		// 		printf("split_tab = %c\n", split_tab[i][0]);
+		map = creat_map(map, split_tab, y, *x_max/2, *y_max/2);
 		if (!map)
 			return (NULL);
 		line = get_next_line(fd);
 		y++;
 	}
+	// int i = -1;
+	// while (tmp[++i].color)
+	// 	printf ("tmp = %f, i = %d\n", tmp[i].x, i);
 	return (tmp);
 }

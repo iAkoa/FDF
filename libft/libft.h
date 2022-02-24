@@ -6,7 +6,7 @@
 /*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 16:51:46 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/02/03 23:13:14 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 13:49:21 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_list
 }			t_list;
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 40
 # endif
 
 int		ft_isdigit(int c);

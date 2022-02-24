@@ -6,7 +6,7 @@
 /*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 15:24:53 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/02/14 18:16:03 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 02:58:07 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ t_vector	ft_utils(t_pixel	p1, t_pixel	p2)
 {
 	t_vector	vector;
 
-	vector.p1.x = (int)p1.x;
-	vector.p1.y = (int)p1.y;
-	vector.p2.x = (int)p2.x;
-	vector.p2.y = (int)p2.y;
+	vector.p1.x = (int)ft_round(p1.x);
+	vector.p1.y = (int)ft_round(p1.y);
+	vector.p2.x = (int)ft_round(p2.x);
+	vector.p2.y = (int)ft_round(p2.y);
 	vector.dx = ft_abs(vector.p2.x - vector.p1.x);
 	vector.sx = compare(vector.p1.x, vector.p2.x);
 	vector.dy = -ft_abs(vector.p2.y - vector.p1.y);
