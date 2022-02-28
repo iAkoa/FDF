@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_keyhook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 13:37:54 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/02/24 14:29:27 by rmattheo         ###   ########lyon.fr   */
+/*   Updated: 2022/02/27 19:40:10 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	ft_keyhook(int keycode, t_win *w)
 		mlx_new_image(w->mlx_ptr, w->width, w->height);
 		ft_draw(w, w->x_max, w->y_max);
 	}
-	if (keycode == MORE)
+	if (keycode == MORE || keycode == T)
 	{
 		t_pixel	x;
 
@@ -62,7 +62,7 @@ int	ft_keyhook(int keycode, t_win *w)
 		mlx_new_image(w->mlx_ptr, w->width, w->height);
 		ft_draw(w, w->x_max, w->y_max);
 	}
-	if (keycode == LESS)
+	if (keycode == LESS || keycode == R)
 	{
 		t_pixel	x;
 
@@ -73,7 +73,7 @@ int	ft_keyhook(int keycode, t_win *w)
 		mlx_new_image(w->mlx_ptr, w->width, w->height);
 		ft_draw(w, w->x_max, w->y_max);
 	}
-	if (keycode == ONE_NUM_PAD)
+	if (keycode == ONE_NUM_PAD || keycode == Q)
 	{
 		w->map = ft_rotation(w->map, 1);
 		// mlx_destroy_image(w->mlx_ptr, w->win_ptr);
@@ -81,7 +81,7 @@ int	ft_keyhook(int keycode, t_win *w)
 		mlx_new_image(w->mlx_ptr, w->width, w->height);
 		ft_draw(w, w->x_max, w->y_max);
 	}
-	if (keycode == TWO_NUM_PAD)
+	if (keycode == TWO_NUM_PAD || keycode == W)
 	{
 		w->map = ft_rotation(w->map, 2);
 		// mlx_destroy_image(w->mlx_ptr, w->win_ptr);
@@ -89,7 +89,7 @@ int	ft_keyhook(int keycode, t_win *w)
 		mlx_new_image(w->mlx_ptr, w->width, w->height);
 		ft_draw(w, w->x_max, w->y_max);
 	}
-	if (keycode == THREE_NUM_PAD)
+	if (keycode == THREE_NUM_PAD || keycode == E)
 	{
 		w->map = ft_rotation(w->map, 3);
 		// mlx_destroy_image(w->mlx_ptr, w->win_ptr);
@@ -97,7 +97,7 @@ int	ft_keyhook(int keycode, t_win *w)
 		mlx_new_image(w->mlx_ptr, w->width, w->height);
 		ft_draw(w, w->x_max, w->y_max);
 	}
-	if (keycode == SIX_NUM_PAD)
+	if (keycode == SIX_NUM_PAD || keycode == A)
 	{
 		w->map = ft_rotation(w->map, -3);
 		// mlx_destroy_image(w->mlx_ptr, w->win_ptr);
@@ -105,7 +105,7 @@ int	ft_keyhook(int keycode, t_win *w)
 		mlx_new_image(w->mlx_ptr, w->width, w->height);
 		ft_draw(w, w->x_max, w->y_max);
 	}
-	if (keycode == FIVE_NUM_PAD)
+	if (keycode == FIVE_NUM_PAD || keycode == S)
 	{
 		w->map = ft_rotation(w->map, -2);
 		// mlx_destroy_image(w->mlx_ptr, w->win_ptr);
@@ -113,7 +113,7 @@ int	ft_keyhook(int keycode, t_win *w)
 		mlx_new_image(w->mlx_ptr, w->width, w->height);
 		ft_draw(w, w->x_max, w->y_max);
 	}
-	if (keycode == FOUR_NUM_PAD)
+	if (keycode == FOUR_NUM_PAD || keycode == D)
 	{
 		w->map = ft_rotation(w->map, -1);
 		// mlx_destroy_image(w->mlx_ptr, w->win_ptr);
