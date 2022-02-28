@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 15:24:53 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/02/28 13:26:53 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/02/28 19:41:21 by rmattheo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ t_vector	ft_utils(t_pixel	p1, t_pixel	p2)
 	vector.p2.z = (int)ft_round(p2.z);
 	vector.p1.color = p1.color;
 	vector.p2.color = p2.color;
+	vector.p1.z_originel = p1.z_originel;
+	vector.p2.z_originel = p2.z_originel;
 	vector.dx = ft_abs(vector.p2.x - vector.p1.x);
 	vector.sx = compare(vector.p1.x, vector.p2.x);
 	vector.dy = -ft_abs(vector.p2.y - vector.p1.y);

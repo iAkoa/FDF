@@ -26,7 +26,9 @@ SRCS	=	main.c				\
 			ft_draw.c			\
 			ft_keyhook.c		\
 			ft_keyhook_process.c\
-			ft_draw_point.c
+			ft_draw_point.c		\
+			ft_color.c			\
+			ft_color_bresenham.c
 
 OBJS	= ${SRCS:.c=.o}
 CC		= gcc
@@ -36,10 +38,10 @@ LIBFLAGS= -framework OpenGL -framework AppKit
 all: maker ${NAME}
 
 %.o : %.c	${HEADER}
-			${CC} ${CFLAGS} ${INCLUDES} -c $< -o $@
+			${CC} -fsanitize=address ${CFLAGS} ${INCLUDES} -c $< -o $@
 
 ${NAME}: ${OBJS} libft/libft.a mlx/libmlx.a
-		${CC} ${CFLAGS} ${OBJS} ${LIBFLAGS} ${INCLUDES} -o $@ Libft/libft.a mlx/libmlx.a
+		${CC} -fsanitize=address ${CFLAGS} ${OBJS} ${LIBFLAGS} ${INCLUDES} -o $@ Libft/libft.a mlx/libmlx.a
 
 maker:
 		${MAKE} -C ${LIBFT}

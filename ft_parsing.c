@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 14:31:27 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/02/28 14:13:11 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/02/28 19:54:04 by rmattheo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,7 @@ t_pixel	*creat_map(t_pixel *map, char **split_tab, int y, int x_max, int y_max)
 		map->z = (double)ft_atoi(split_tab[i]);
 		map->x = x - (double)x_max;
 		map->y = y - (double)y_max;
-		size = ft_strchr_size(split_tab[i], ',');
-		if (size > 0)
-			color = ft_atoi_base(&split_tab[i][size + 3], "0123456789ABCDEF");
+		map->z_originel = map->z;
 		map->color = color;
 		map++;
 		x++;
@@ -128,5 +126,6 @@ t_pixel	*ft_parsing(t_win *w)
 		p.line = get_next_line(fd);
 		y++;
 	}
+	ft_color(tmp, w);
 	return (tmp);
 }

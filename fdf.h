@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 16:44:39 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/02/28 14:12:11 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/02/28 19:40:10 by rmattheo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <fcntl.h>
 # include "mlx/mlx.h"
 # include <math.h>
+# include <stdio.h>
 //include "minilibx/mlx.h"
 
 typedef struct s_data
@@ -33,6 +34,7 @@ typedef struct s_pixel
 	double	x;
 	double	y;
 	double	z;
+	double	z_originel;
 	int		color;
 	int		line;
 	int		column;
@@ -63,6 +65,8 @@ typedef struct s_win
 	t_pixel	*map;
 	int		y_max;
 	int		x_max;
+	double	z_max;
+	double	z_min;
 	char	*nameW;
 	char	*name;
 }				t_win;
@@ -136,5 +140,7 @@ void		ft_draw(t_win *w);
 int			ft_keyhook(int keycode, t_win *w);
 void		ft_keyhook_process(t_win *w);
 void		ft_draw_point(t_win *w);
+void		ft_color(t_pixel *map, t_win *w);
+int			ft_color_bresenham(double z1, double z2, double per, t_win *w);
 
 #endif
