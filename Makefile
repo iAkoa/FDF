@@ -24,7 +24,9 @@ SRCS	=	main.c				\
 			ft_set.c			\
 			ft_translation.c	\
 			ft_draw.c			\
-			ft_keyhook.c
+			ft_keyhook.c		\
+			ft_keyhook_process.c\
+			ft_draw_point.c
 
 OBJS	= ${SRCS:.c=.o}
 CC		= gcc

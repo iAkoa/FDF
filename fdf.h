@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 16:44:39 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/02/24 13:42:54 by rmattheo         ###   ########lyon.fr   */
+/*   Updated: 2022/02/28 14:12:11 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ typedef struct s_data
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-	int		*x_max;
-	int		*y_max;
 }				t_data;
 
 typedef struct s_pixel
@@ -65,12 +63,15 @@ typedef struct s_win
 	t_pixel	*map;
 	int		y_max;
 	int		x_max;
+	char	*nameW;
+	char	*name;
 }				t_win;
 
 typedef struct s_pars
 {
-	char	**split;
 	char	*line;
+	char	**line2;
+	char	**split_tab;
 	
 }				t_pars;
 
@@ -122,7 +123,7 @@ typedef struct s_pars
 # define UP_ARROW 126
 
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
-t_pixel		*ft_parsing(char *mapargv, int *y_max, int *x_max);
+t_pixel		*ft_parsing(t_win *w);
 t_pixel		*ft_zoom(t_pixel *map, int zoom, t_pixel xy);
 void		ft_bresenham(t_vector vector, t_win *w, t_pixel ref);
 t_vector	ft_utils(t_pixel	p1, t_pixel	p2);
@@ -131,7 +132,9 @@ t_pixel		*ft_rotation(t_pixel *map, int projection);
 t_pixel		ft_ref(t_win w);
 t_pixel		*ft_set(t_pixel *map, t_win s);
 t_pixel		*ft_translation(t_pixel *map, int mod);
-void		ft_draw(t_win *w, int x_max, int y_max);
+void		ft_draw(t_win *w);
 int			ft_keyhook(int keycode, t_win *w);
+void		ft_keyhook_process(t_win *w);
+void		ft_draw_point(t_win *w);
 
 #endif

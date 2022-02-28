@@ -6,7 +6,7 @@
 /*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 14:31:27 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/02/27 19:51:51 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/02/28 14:13:11 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,30 +30,30 @@ static int ft_size_map(char *line)
 	}
 	return (count + 1);
 }
-static t_pixel	*ft_malloc_map(int fd, int *y_max, int *x_max)
+static t_pixel	*ft_malloc_map(int fd, t_win *w)
 {
 	char	*line;
 	t_pixel	*map;
 	int		i;
 
 	i = 0;
-	*y_max = 0;
-	*x_max = 0;
+	w->y_max = 0;
+	w->x_max = 0;
 	line = get_next_line(fd);
 	if (line)
-		*y_max += 1;
+		w->y_max += 1;
 	i = ft_size_map(line);
-	*x_max = i;
+	w->x_max = i;
 	while (line)
 	{
 		line = get_next_line(fd);
 		if (line)
-			*y_max += 1;
+			w->y_max += 1;
 
 	}
-	i *= *y_max;
-	printf("x_max = %i\n", *x_max);
-	printf("y_max = %i\n", *y_max);
+	i *= w->y_max;
+	printf("x_max = %i\n", w->x_max);
+	printf("y_max = %i\n", w->y_max);
 	map = ft_calloc(i, sizeof(t_pixel));
 	if (!map)
 		return (0);
@@ -103,31 +103,29 @@ t_pixel	*creat_map(t_pixel *map, char **split_tab, int y, int x_max, int y_max)
 	return (map);
 }
 
-t_pixel	*ft_parsing(char *mapargv, int *y_max, int *x_max)
+t_pixel	*ft_parsing(t_win *w)
 {
 	int		fd;
-	char	*line;
-	char	**line2;
-	char	**split_tab;
+	t_pars	p;
 	t_pixel	*map;
 	t_pixel	*tmp;
 	double	y;
 
 	y = 0;
-	fd = open(mapargv, O_RDONLY);
-	map = ft_malloc_map(fd, y_max, x_max);
+	fd = open(w->name, O_RDONLY);
+	map = ft_malloc_map(fd, w);
 	tmp = map;
 	close(fd);
-	fd = open(mapargv, O_RDONLY);
-	line = get_next_line(fd);
-	while (line)
+	fd = open(w->name, O_RDONLY);
+	p.line = get_next_line(fd);
+	while (p.line)
 	{
-		line2 = ft_split(line, '\n');
-		split_tab = ft_split(*line2, ' ');
-		map = creat_map(map, split_tab, y, *x_max / 2, *y_max / 2);
+		p.line2 = ft_split(p.line, '\n');
+		p.split_tab = ft_split(*p.line2, ' ');
+		map = creat_map(map, p.split_tab, y, w->x_max / 2, w->y_max / 2);
 		if (!map)
 			return (NULL);
-		line = get_next_line(fd);
+		p.line = get_next_line(fd);
 		y++;
 	}
 	return (tmp);
