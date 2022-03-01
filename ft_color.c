@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_color.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 17:39:20 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/02/28 18:33:16 by rmattheo         ###   ########lyon.fr   */
+/*   Updated: 2022/03/01 03:12:56 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	ft_color(t_pixel *map, t_win *w)
 			map[i].color = ft_colinterpolate(0x000000FF, 0x0000FFFFF,
 					(map[i].z - z_min_local) / (z_max_local - z_min_local));
 		}
+		map[i].z = map[i].z / w->z_max * w->x_max / 15;
 		i++;
 	}
 }

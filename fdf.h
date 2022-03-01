@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 16:44:39 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/02/28 19:40:10 by rmattheo         ###   ########lyon.fr   */
+/*   Updated: 2022/03/01 02:10:04 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,9 @@ typedef struct s_win
 	double	z_min;
 	char	*nameW;
 	char	*name;
+	int		draw_point;
+	int		draw_color;
+	int		draw_map_color;
 }				t_win;
 
 typedef struct s_pars

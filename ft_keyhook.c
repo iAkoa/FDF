@@ -6,7 +6,7 @@
 /*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 13:37:54 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/02/28 14:07:07 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/03/01 03:30:02 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,19 @@ int	ft_keyhook(int keycode, t_win *w)
 	}
 	if (keycode == P)
 	{
+		w->draw_point = -w->draw_point;
+		ft_keyhook_process(w);
+		ft_draw(w);
+	}
+	if (keycode == C)
+	{
+		w->draw_color = -w->draw_color;
+		ft_keyhook_process(w);
+		ft_draw(w);
+	}
+	if (keycode == X)
+	{
+		w->draw_map_color = -w->draw_map_color;
 		ft_keyhook_process(w);
 		ft_draw(w);
 	}

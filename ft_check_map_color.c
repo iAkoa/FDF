@@ -1,39 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_zoom.c                                          :+:      :+:    :+:   */
+/*   ft_check_map_color.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 22:46:57 by pat               #+#    #+#             */
-/*   Updated: 2022/02/28 23:02:18 by pat              ###   ########lyon.fr   */
+/*   Created: 2022/03/01 01:52:08 by pat               #+#    #+#             */
+/*   Updated: 2022/03/01 03:09:49 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-#include "stdio.h"
+// #include "fdf.h"
 
-t_pixel	*ft_zoom(t_pixel *map, int zoom, t_pixel xy)
-{
-	t_pixel	*tmp;
+// void ft_check_map_color(t_win *w)
+// {
+// 	int	i;
 
-	xy.x = 0;
-	tmp = map;
-	while (map->color)
-	{
-		if (zoom == 1)
-		{
-			map->x *= 1.3;
-			map->y *= 1.3;
-			map->z *= 1.3;
-		}
-		if (zoom == -1)
-		{
-			map->x /= 1.3;
-			map->y /= 1.3;
-			map->z /= 1.3;
-		}
-		map++;
-	}
-	return (tmp);
-}
+// 	i = 0;
+// 	while (i < (w->x_max * w->y_max))
+// 	{
+// 		if (strc)
+// 	}
+// }

@@ -38,10 +38,10 @@ LIBFLAGS= -framework OpenGL -framework AppKit
 all: maker ${NAME}
 
 %.o : %.c	${HEADER}
-			${CC} -fsanitize=address ${CFLAGS} ${INCLUDES} -c $< -o $@
+			${CC} ${CFLAGS} ${INCLUDES} -c $< -o $@
 
 ${NAME}: ${OBJS} libft/libft.a mlx/libmlx.a
-		${CC} -fsanitize=address ${CFLAGS} ${OBJS} ${LIBFLAGS} ${INCLUDES} -o $@ Libft/libft.a mlx/libmlx.a
+		${CC} ${CFLAGS} ${OBJS} ${LIBFLAGS} ${INCLUDES} -o $@ Libft/libft.a mlx/libmlx.a
 
 maker:
 		${MAKE} -C ${LIBFT}

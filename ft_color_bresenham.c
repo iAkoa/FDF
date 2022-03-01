@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_color_bresenham.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 18:18:19 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/02/28 19:57:06 by rmattheo         ###   ########lyon.fr   */
+/*   Updated: 2022/03/01 03:56:23 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@ int	ft_color_bresenham(double z1, double z2, double per, t_win *w)
 	double	z;
 
 	i = 0;
-	// printf("z_max = %f\n", w->z_max);
-	// printf("z_min = %f\n", w->z_min);
-	// printf("per = %f\n", per);
 	z = z1 + per * (z2 - z1);
-	// printf("z1 = %f\n", z);
+	if (w->draw_color == -1)
+		return(0x00FFFFFF);
 	if (z >= (75.0 / 100) * (w->z_max - w->z_min))
 	{
 		z_min_local = (75.0 / 100) * (w->z_max - w->z_min);
@@ -50,8 +48,11 @@ int	ft_color_bresenham(double z1, double z2, double per, t_win *w)
 	{
 		z_min_local = 0;
 		z_max_local = (25.0 / 100) * w->z_max;
+		if(w->draw_map_color < 0)
+			return (ft_colinterpolate(0, 0x0000FFFFF,
+				(z - z_min_local) / (z_max_local - z_min_local)));
 		return (ft_colinterpolate(0x000000FF, 0x0000FFFFF,
 				(z - z_min_local) / (z_max_local - z_min_local)));
-		}
-		i++;
+	}
+	i++;
 }

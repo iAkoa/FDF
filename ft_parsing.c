@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 14:31:27 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/02/28 19:54:04 by rmattheo         ###   ########lyon.fr   */
+/*   Updated: 2022/03/01 03:27:39 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,43 +76,44 @@ int	ft_strchr_size(const char *s, int c)
 	}
 	return (0);
 }
-t_pixel	*creat_map(t_pixel *map, char **split_tab, int y, int x_max, int y_max)
+t_pixel	*creat_map(t_win *w, char **split_tab, int y, int x_max, int y_max)
 {
 	double	x;
 	int		i;
 	int		color;
 	int		size;
+	t_pixel	*tmp;
 
 	x = 0;
 	i = 0;
 	size = 0;
-	color = 0x00FFFFFF;
+	color = 0;
+	tmp = w->map;
 	while (split_tab[i])
 	{
-		map->z = (double)ft_atoi(split_tab[i]);
-		map->x = x - (double)x_max;
-		map->y = y - (double)y_max;
-		map->z_originel = map->z;
-		map->color = color;
-		map++;
+		w->map->z = (double)ft_atoi(split_tab[i]);
+		w->map->x = x - (double)x_max;
+		w->map->y = y - (double)y_max;
+		w->map->z_originel = w->map->z;
+		w->map++;
 		x++;
 		i++;
 	}
-	return (map);
+	return (w->map);
 }
 
 t_pixel	*ft_parsing(t_win *w)
 {
 	int		fd;
 	t_pars	p;
-	t_pixel	*map;
 	t_pixel	*tmp;
 	double	y;
 
 	y = 0;
+	w->draw_point = 1;
 	fd = open(w->name, O_RDONLY);
-	map = ft_malloc_map(fd, w);
-	tmp = map;
+	w->map = ft_malloc_map(fd, w);
+	tmp = w->map;
 	close(fd);
 	fd = open(w->name, O_RDONLY);
 	p.line = get_next_line(fd);
@@ -120,8 +121,8 @@ t_pixel	*ft_parsing(t_win *w)
 	{
 		p.line2 = ft_split(p.line, '\n');
 		p.split_tab = ft_split(*p.line2, ' ');
-		map = creat_map(map, p.split_tab, y, w->x_max / 2, w->y_max / 2);
-		if (!map)
+		w->map = creat_map(w, p.split_tab, y, w->x_max / 2, w->y_max / 2);
+		if (!w->map)
 			return (NULL);
 		p.line = get_next_line(fd);
 		y++;
