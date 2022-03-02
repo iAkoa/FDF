@@ -6,7 +6,7 @@
 /*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 05:14:47 by pat               #+#    #+#             */
-/*   Updated: 2022/03/01 03:30:34 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/03/01 16:12:48 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	main(int argc, char **argv)
 	img.img = mlx_new_image(w.mlx_ptr, w.width, w.height);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
 			&img.line_length, &img.endian);
-	mlx_pixel_put(w.mlx_ptr, w.win_ptr, 0, 0, 0x00FFFFFF);
 	w.ref = ft_ref(w);
 	w.map = ft_parsing(&w);
 	w.map = ft_set(w.map, w);
