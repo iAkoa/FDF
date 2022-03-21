@@ -1,34 +1,36 @@
 NAME	= fdf
-HEADER	= 	fdf.h \
+HEADER	= 	include/fdf.h \
 			mlx/mlx.h \
 			mlx/mlx_new_window.h \
 			mlx/mlx_int.h \
 			mlx/mlx_opengl.h \
 			mlx/mlx_png.h \
-			libft/libft.h
+			libft129/include/gc.h \
+			libft129/include/libft.h
 
-LIBFT	= Libft
+LIBFT	= libft2
 
 MLX		= mlx
 
 INCLUDES= ${addprefix -I, ${sort ${dir ${HEADER}}}}
-SRCS	=	main.c				\
-			ft_parsing.c		\
-			my_mlx_pixel_put.c	\
-			ft_zoom.c			\
-			ft_utils.c			\
-			ft_rotation.c		\
-			ft_ref.c			\
-			ft_bresenham.c		\
-			ft_projection.c		\
-			ft_set.c			\
-			ft_translation.c	\
-			ft_draw.c			\
-			ft_keyhook.c		\
-			ft_keyhook_process.c\
-			ft_draw_point.c		\
-			ft_color.c			\
-			ft_color_bresenham.c
+SRCS	=	main.c							\
+			src/ft_parsing/ft_parsing.c			\
+			src/ft_parsing/ft_ref.c				\
+			src/ft_parsing/ft_free_while.c		\
+			src/ft_moove/ft_zoom.c				\
+			src/ft_moove/ft_translation.c		\
+			src/ft_moove/ft_rotation.c			\
+			src/ft_moove/ft_set.c				\
+			src/ft_bresenham/ft_utils.c			\
+			src/ft_bresenham/ft_bresenham.c		\
+			src/ft_hook/ft_keyhook.c			\
+			src/ft_hook/ft_keyhook_process.c	\
+			src/ft_hook/ft_keyhook_exec.c		\
+			src/ft_draw/ft_draw.c				\
+			src/ft_draw/ft_draw_point.c			\
+			src/ft_color/ft_color.c				\
+			src/ft_color/ft_color_bresenham.c	\
+			src/ft_color/ft_color_25less.c
 
 OBJS	= ${SRCS:.c=.o}
 CC		= gcc
@@ -40,8 +42,8 @@ all: maker ${NAME}
 %.o : %.c	${HEADER}
 			${CC} ${CFLAGS} ${INCLUDES} -c $< -o $@
 
-${NAME}: ${OBJS} libft/libft.a mlx/libmlx.a
-		${CC} ${CFLAGS} ${OBJS} ${LIBFLAGS} ${INCLUDES} -o $@ Libft/libft.a mlx/libmlx.a
+${NAME}: ${OBJS} libft2/libft2.a mlx/libmlx.a
+		${CC} ${CFLAGS} ${OBJS} ${LIBFLAGS} ${INCLUDES} -o $@ libft2/libft2.a mlx/libmlx.a
 
 maker:
 		${MAKE} -C ${LIBFT}
