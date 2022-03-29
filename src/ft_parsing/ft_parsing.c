@@ -6,7 +6,7 @@
 /*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 14:31:27 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/03/21 15:59:09 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/03/29 02:09:14 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ t_pixel	*creat_map(t_win *w, char **split_tab, int y)
 {
 	double	x;
 	int		i;
-	t_pixel	*tmp;
 	int		x_max;
 	int		y_max;
 
@@ -84,13 +83,16 @@ t_pixel	*creat_map(t_win *w, char **split_tab, int y)
 	y_max = w->y_max / 2;
 	x = 0;
 	i = 0;
-	tmp = w->map;
 	while (split_tab[i])
 	{
 		w->map->z = (double)ft_atoi(split_tab[i]);
+		if ((w->z_compare != w->map->z) && i)
+			w->z_no_color = 1;
+		w->z_compare = w->map->z;
 		w->map->x = x - (double)x_max;
 		w->map->y = y - (double)y_max;
 		w->map->z_originel = w->map->z;
+		w->map->color = 0x00FFFFF;
 		w->map++;
 		x++;
 		i++;
@@ -121,6 +123,10 @@ t_pixel	*ft_parsing(t_win *w)
 		p.line = gc_get_next_line(&w->track, fd);
 		y++;
 	}
-	ft_color(tmp, w);
+	printf("w.z_no_color %i\n", w->z_no_color);
+	if (w->z_no_color)
+		ft_color(tmp, w);
+	else
+		ft_full_white(tmp,w);
 	return (tmp);
 }

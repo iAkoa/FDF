@@ -6,7 +6,7 @@
 /*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 05:14:47 by pat               #+#    #+#             */
-/*   Updated: 2022/03/21 16:02:11 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/03/29 02:17:56 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	main(int argc, char **argv)
 {
 	t_data		img;
 	t_win		w;
-
+	
+	w.track = NULL;
 	(void)img;
 	(void)argc;
 	w.name = argv[1];
@@ -28,6 +29,7 @@ int	main(int argc, char **argv)
 	w.draw_color = 1;
 	w.draw_map_color = 1;
 	w.stop = 0;
+	w.z_no_color = 0;
 	w.mlx_ptr = mlx_init();
 	w.win_ptr = mlx_new_window(w.mlx_ptr, w.width, w.height, w.namew);
 	img.img = mlx_new_image(w.mlx_ptr, w.width, w.height);
@@ -35,11 +37,10 @@ int	main(int argc, char **argv)
 			&img.line_length, &img.endian);
 	w.ref = ft_ref(w);
 	w.map = ft_parsing(&w);
-	w.img = img.img;
 	w.map = ft_set(w.map, w);
+	w.img = img.img;
 	ft_draw(&w);
 	mlx_key_hook(w.win_ptr, ft_keyhook, &w);
 	mlx_loop(w.mlx_ptr);
-
 	return (0);
 }

@@ -6,11 +6,23 @@
 /*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 03:31:30 by pat               #+#    #+#             */
-/*   Updated: 2022/03/19 03:33:59 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/03/29 01:45:32 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
+
+void ft_full_white(t_pixel *map,t_win *w)
+{
+	int	i;
+	
+	i = 0;
+	while (i < (w->x_max * w->y_max))
+	{
+		map[i].color = 0x00FFFFF;
+		i++;
+	}
+}
 
 void	ft_color_25less(t_pixel *map, t_win *w)
 {

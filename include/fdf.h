@@ -6,7 +6,7 @@
 /*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 16:44:39 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/03/21 16:02:34 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/03/29 01:44:57 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ typedef struct s_win
 	int		draw_point;
 	int		draw_color;
 	int		draw_map_color;
+	int		z_no_color;
+	double	z_compare;
 	t_track	*track;
 	int		stop;
 	int		i;
@@ -135,7 +137,7 @@ typedef struct s_pars
 
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 t_pixel		*ft_parsing(t_win *w);
-t_pixel		*ft_zoom(t_pixel *map, int zoom, t_pixel xy);
+t_pixel		*ft_zoom(t_pixel *map, int zoom, t_win *w);
 void		ft_bresenham(t_vector vector, t_win *w, t_pixel ref);
 t_vector	ft_utils(t_pixel	p1, t_pixel	p2);
 t_pixel		*ft_rotation(t_pixel *map, int projection);
@@ -146,6 +148,7 @@ void		ft_draw(t_win *w);
 int			ft_keyhook(int keycode, t_win *w);
 void		ft_keyhook_process(t_win *w);
 void		ft_draw_point(t_win *w);
+void 		ft_full_white(t_pixel *map,t_win *w);
 void		ft_color(t_pixel *map, t_win *w);
 int			ft_color_bresenham(double z1, double z2, double per, t_win *w);
 void		ft_free_while(t_win *w, t_pars *p);

@@ -6,7 +6,7 @@
 /*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 18:18:19 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/03/19 03:35:45 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/03/29 02:10:04 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	ft_color_bresenham(double z1, double z2, double per, t_win *w)
 	double	z;
 
 	z = z1 + per * (z2 - z1);
-	if (w->draw_color == -1)
+	if (w->draw_color == -1 || !w->z_no_color)
 		return (0x00FFFFFF);
 	if (z >= (75.0 / 100.0) * (w->z_max - w->z_min) + w->z_min)
 		return (ft_color75_100(z1, z2, per, w));

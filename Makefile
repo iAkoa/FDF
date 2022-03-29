@@ -13,7 +13,8 @@ LIBFT	= libft2
 MLX		= mlx
 
 INCLUDES= ${addprefix -I, ${sort ${dir ${HEADER}}}}
-SRCS	=	main.c							\
+
+SRCS	=	main.c								\
 			src/ft_parsing/ft_parsing.c			\
 			src/ft_parsing/ft_ref.c				\
 			src/ft_parsing/ft_free_while.c		\

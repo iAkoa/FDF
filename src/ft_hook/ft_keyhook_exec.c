@@ -6,7 +6,7 @@
 /*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 03:44:17 by pat               #+#    #+#             */
-/*   Updated: 2022/03/21 14:37:55 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/03/29 01:58:04 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ void	ft_keyhook1(int keycode, t_win *w)
 
 void	ft_keyhook2(int keycode, t_win *w)
 {
-	t_pixel	x;
-
 	if (keycode == RIGHT_ARROW)
 	{
 		w->map = ft_translation(w->map, 3);
@@ -53,15 +51,13 @@ void	ft_keyhook2(int keycode, t_win *w)
 	}
 	if (keycode == MORE || keycode == T)
 	{
-		x.x = 0;
-		w->map = ft_zoom(w->map, 1, x);
+		w->map = ft_zoom(w->map, 1, w);
 		ft_keyhook_process(w);
 		ft_draw(w);
 	}
 	if (keycode == LESS || keycode == R)
 	{
-		x.x = 0;
-		w->map = ft_zoom(w->map, -1, x);
+		w->map = ft_zoom(w->map, -1, w);
 		ft_keyhook_process(w);
 		ft_draw(w);
 	}
