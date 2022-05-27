@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_zoom.c                                          :+:      :+:    :+:   */
+/*   ft_my_pixel_clear.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 22:46:57 by pat               #+#    #+#             */
-/*   Updated: 2022/05/27 14:03:33 by rmattheo         ###   ########lyon.fr   */
+/*   Created: 2022/05/20 16:54:16 by rmattheo          #+#    #+#             */
+/*   Updated: 2022/05/27 14:08:30 by rmattheo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
 
-t_pixel	*ft_zoom(t_pixel *map, int zoom, t_win *w)
+void	ft_my_pixel_clear(t_win *w)
 {
-	t_pixel	*tmp;
-	int		i;
+	int	x;
+	int	y;
 
-	i = 0;
-	tmp = map;
-	while (i < (w->x_max * w->y_max))
+	x = 0;
+	while (x < w->width)
 	{
-		if (zoom == 1)
+		y = 0;
+		while (y < w->height)
 		{
-			map->x *= 1.2;
-			map->y *= 1.2;
-			map->z *= 1.2;
+			ft_my_mlx_pixel_put(w, x, y, 0);
+			y++;
 		}
-		if (zoom == -1)
-		{
-			map->x /= 1.2;
-			map->y /= 1.2;
-			map->z /= 1.2;
-		}
-		i++;
-		map++;
+		x++;
 	}
-	return (tmp);
 }

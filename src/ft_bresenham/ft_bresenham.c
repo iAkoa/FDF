@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bresenham.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 13:07:00 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/03/19 02:59:10 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/05/27 14:09:22 by rmattheo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	ft_set_round(t_vector vector, t_pixel *p1, int *err, t_win *w)
 
 static void	ft_pixel_put(t_win *w, t_vector vector, t_pixel ref)
 {
-	mlx_pixel_put(w->mlx_ptr, w->win_ptr, ft_round(vector.p1.x + ref.x),
+	ft_my_mlx_pixel_put(w, ft_round(vector.p1.x + ref.x),
 		ft_round(vector.p1.y + ref.y),
 		ft_color_bresenham(vector.p1.z_originel,
 			vector.p2.z_originel,

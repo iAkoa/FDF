@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_color_25less.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 03:31:30 by pat               #+#    #+#             */
-/*   Updated: 2022/03/29 01:45:32 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/05/27 14:09:12 by rmattheo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
 
-void ft_full_white(t_pixel *map,t_win *w)
+void	ft_full_white(t_pixel *map, t_win *w)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < (w->x_max * w->y_max))
 	{

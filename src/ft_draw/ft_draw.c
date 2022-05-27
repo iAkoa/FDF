@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_draw.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 13:27:29 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/03/29 00:18:18 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/05/27 14:08:20 by rmattheo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_draw(t_win *w)
 	t_vector	v;
 
 	i = 0;
+	ft_my_pixel_clear(w);
 	if (w->draw_point == 1)
 	{
 		while (w->map[i].color)
@@ -37,4 +38,5 @@ void	ft_draw(t_win *w)
 	}
 	else
 		ft_draw_point(w);
+	mlx_put_image_to_window(w->mlx_ptr, w->win_ptr, w->image.img, 0, 0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 14:31:27 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/03/29 02:09:14 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/05/27 14:05:55 by rmattheo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,8 @@ t_pixel	*ft_parsing(t_win *w)
 	int		fd;
 	t_pars	p;
 	t_pixel	*tmp;
-	double	y;
 
-	y = 0;
+	w->y = 0;
 	w->draw_point = 1;
 	fd = open(w->name, O_RDONLY);
 	w->map = ft_malloc_map(fd, w);
@@ -119,14 +118,13 @@ t_pixel	*ft_parsing(t_win *w)
 	{
 		p.line2 = gc_strtrim(&w->track, p.line, "\n");
 		p.split_tab = gc_split(&w->track, p.line2, ' ');
-		w->map = creat_map(w, p.split_tab, y);
+		w->map = creat_map(w, p.split_tab, w->y);
 		p.line = gc_get_next_line(&w->track, fd);
 		y++;
 	}
-	printf("w.z_no_color %i\n", w->z_no_color);
 	if (w->z_no_color)
 		ft_color(tmp, w);
 	else
-		ft_full_white(tmp,w);
+		ft_full_white(tmp, w);
 	return (tmp);
 }
