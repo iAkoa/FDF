@@ -31,11 +31,13 @@ SRCS	=	main.c								\
 			src/ft_draw/ft_draw_point.c			\
 			src/ft_color/ft_color.c				\
 			src/ft_color/ft_color_bresenham.c	\
-			src/ft_color/ft_color_25less.c
+			src/ft_color/ft_color_25less.c		\
+			src/ft_draw/ft_my_pixel_clear.c		\
+			src/ft_draw/ft_my_mlx_pixel_put.c		\
 
 OBJS	= ${SRCS:.c=.o}
 CC		= gcc
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra -O2
 LIBFLAGS= -framework OpenGL -framework AppKit
 
 all: maker ${NAME}

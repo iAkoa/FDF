@@ -6,7 +6,7 @@
 /*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 14:31:27 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/05/27 14:05:55 by rmattheo         ###   ########lyon.fr   */
+/*   Updated: 2022/05/27 18:52:31 by rmattheo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ t_pixel	*ft_parsing(t_win *w)
 		p.split_tab = gc_split(&w->track, p.line2, ' ');
 		w->map = creat_map(w, p.split_tab, w->y);
 		p.line = gc_get_next_line(&w->track, fd);
-		y++;
+		w->y++;
 	}
 	if (w->z_no_color)
 		ft_color(tmp, w);

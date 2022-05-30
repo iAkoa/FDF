@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 16:44:39 by rmattheo          #+#    #+#             */
-/*   Updated: 2022/03/29 01:44:57 by pat              ###   ########lyon.fr   */
+/*   Updated: 2022/05/27 17:08:21 by rmattheo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,13 @@ typedef struct s_vector
 	int		color;
 }				t_vector;
 
+typedef struct s_pars
+{
+	char	*line;
+	char	*line2;
+	char	**split_tab;
+}				t_pars;
+
 typedef struct s_win
 {
 	void	*img;
@@ -79,14 +86,11 @@ typedef struct s_win
 	int		stop;
 	int		i;
 	t_pixel	p;
+	double	y;
+	int		fd;
+	t_pars	pars;
+	t_data	image;
 }				t_win;
-
-typedef struct s_pars
-{
-	char	*line;
-	char	*line2;
-	char	**split_tab;
-}				t_pars;
 
 # define ESC 53
 
@@ -94,7 +98,7 @@ typedef struct s_pars
 # define B 11
 # define C 8
 # define D 2
-# define E 4
+# define E 14
 # define F 3
 # define G 9
 # define H 4
@@ -144,11 +148,13 @@ t_pixel		*ft_rotation(t_pixel *map, int projection);
 t_pixel		ft_ref(t_win w);
 t_pixel		*ft_set(t_pixel *map, t_win s);
 t_pixel		*ft_translation(t_pixel *map, int mod);
+void		ft_my_pixel_clear(t_win *w);
+void		ft_my_mlx_pixel_put(t_win *w, int x, int y, int color);
 void		ft_draw(t_win *w);
 int			ft_keyhook(int keycode, t_win *w);
 void		ft_keyhook_process(t_win *w);
 void		ft_draw_point(t_win *w);
-void 		ft_full_white(t_pixel *map,t_win *w);
+void		ft_full_white(t_pixel *map, t_win *w);
 void		ft_color(t_pixel *map, t_win *w);
 int			ft_color_bresenham(double z1, double z2, double per, t_win *w);
 void		ft_free_while(t_win *w, t_pars *p);
