@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_set.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmattheo <rmattheo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: pat <pat@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:14:37 by pat               #+#    #+#             */
-/*   Updated: 2022/05/27 17:36:53 by rmattheo         ###   ########lyon.fr   */
+/*   Updated: 2022/05/30 18:48:32 by pat              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 t_pixel	*ft_set(t_pixel *map, t_win s)
 {
-	int	i;
 	int	j;
 
 	j = -1;
-	i = 0;
 	while (++j < 15)
 		map = ft_rotation(map, 1);
 	j = -1;
